@@ -1,0 +1,11 @@
+
+
+
+'isl';'ice4';'ice3';'ice2'	ISLANDA
+'cph';'cvh'			ARGENTINA	
+'stax'				GRECIA
+'brb';'trf'			TOSCANA SISMICA
+'a02'				AMIATA
+'cha';'vlt';'gry'		VDA
+'mvt'				ETNA
+stz={'cvh';'cph';'cha';'ice4';'trf';'ice3';'ice2';'a02';'vlt';'gry';'mvt';'isl'};

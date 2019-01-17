@@ -1,0 +1,52 @@
+
+%% STATION PARAMETERS
+station.name='LPB';
+station.smp=[50 50 50 50];
+station.chname={'m1','m2','m3','m4'};
+station.advoltage=5;   %... Volt
+station.adbit=16;       %... bit
+station.gain=[.2 .2 .2 .2];
+station.filter=[1 15;1 15;1 15;1 15];
+station.drumshift=[.5 .5 .5 .5];    %... UM
+station.resampling=[1 1 1 1];
+station.figuresdir='/var/www/html/item_drumplot/';
+station.network='WYSSEN IDA Network';
+station.legend={'Pa','Pa','Pa','Pa'};
+station.legendvalue={'0.5','0.5','0.5','0.5'};
+station.amplification=[1 1 1 1];
+station.spikeremove=[0 50];
+station.writematfile=1;	%... flag x lalvataggio file .mat
+station.offset=1;   %... minutes
+station.localtimeutcoffset=-8;
+
+%% WINSTON PARAMETERS
+station.wslocation='';
+station.wschannels={'m1','m2','m3','m4'};	% !!!!!!!!! NB intorto per stazioni Beni
+station.wsnetwork='';
+station.wsstation='LPB';	% !!!!!!!!! NB intorto per stazioni Beni
+station.wspinnumber={''};
+station.wsserver='';
+station.wsport=0;
+
+%% MYSQL PARAMETERS
+station.writestatus=false;
+station.dB_status_tablename=[lower(station.name),'status'];
+station.dBhost='127.0.0.1';
+station.dBuser='wwsuser';
+station.dBpassword='wwspass';
+station.dB_status_name='W_status';
+
+station.writenoise=false;
+station.dB_noise_name='W_noiselevel';
+station.noise_filename='';
+station.dB_noise_tablename=[lower(station.name)];
+
+
+
+%% WEB SYNC
+station.webupfolder='';
+
+%% MAIL ALERT
+station.mailalert='no';
+station.mailsender='labgeofisica@unifi.it';
+station.mailrecipients={'gulivieri@unifi.it','dario.d.donne@gmail.com'};

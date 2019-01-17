@@ -1,0 +1,1 @@
+net use z: \\10.1.1.251\share\DATA wave*worm /user:admin

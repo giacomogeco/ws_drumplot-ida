@@ -1,0 +1,1 @@
+function y=smooth(x,w)% y=smooth(x,w) esegue lo smoothing della funzione x% mediando all'interno dell'intervallo wwh=round(w/2);w=wh*2;n=length(x);xm=cumsum(x);xw(1:wh)=xm(wh+1:w)-xm(1);xw(wh+1:n-wh)=xm(w+1:n)-xm(1:n-w);xw(n-wh+1:n)=xm(n)-xm(n-w+1:n-wh);wl(1:wh)=wh+(0:wh-1);wl(wh+1:n-wh)=w;wl(n-wh+1:n)=w-(1:wh);y=xw./wl;return

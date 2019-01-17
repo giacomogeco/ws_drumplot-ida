@@ -1,0 +1,1 @@
+function [ud,ns,ew]=displacement(ud,ns,ew,smp,lc,hc)% la funzione [ud,ns,ew]=displacement(ud,ns,ew) converte% la velocita' del moto dl suolo in spostamentodt=1/smp;ud=detrend(ud);ns=detrend(ns);ew=detrend(ew);ud=cumsum(ud).*dt;ew=cumsum(ew).*dt;ns=cumsum(ns).*dt;ud=filtrax(ud,lc,hc,smp);ns=filtrax(ns,lc,hc,smp);ew=filtrax(ew,lc,hc,smp);return

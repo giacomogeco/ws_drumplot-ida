@@ -1,0 +1,1 @@
+function c = filtrax(S,L,H,Fs)%c = filtrax(S,L,H,Fs)% is filtering the time function S using a 4-order% Butterworth filter.% L is the low-cut frequency% H is the high-cut frequency% Fs is the sampling frequency (in Hz)% by Maurizio RipepeS=detrend(S);[b,a]=butter(2,[L H]*2/Fs);[H,w]=freqz(b,a,512);c=filtfilt (b,a,S);
