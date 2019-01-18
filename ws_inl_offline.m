@@ -2,7 +2,7 @@
 clear all,close all,clear global
 %    function iad(net,namestz,ConfFileName)
 % net='wyssen';namestz='fru';ConfFileName='conf_fru_2016_priv.txt';
-net='wyssen';namestz='no1';ConfFileName='conf_no1_2017_priv.txt';
+net='wyssen-EU';namestz='no2';ConfFileName='conf_no2.txt';
 % net='wyssen';namestz='no3';ConfFileName='conf_no3_2017_priv.txt';
 
 clear global
@@ -11,16 +11,16 @@ warning off
 
 %%%%%%%%%% SET PATHS %%%%%%%%%%%
 global working_dir slh
-% [working_dir,slh]=iad_setpath;
+[working_dir,slh]=ws_drumplot_setpath;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-working_dir='/home/item/Documents/MATLAB/ws_drumplot';
+working_dir=pwd;
 slh='/';
 %%%%%%%%%% STATIONS & PROCESSING PARAMETERS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 station=ws_read_ascii2cell([working_dir,slh,'conf_files',slh,net,slh,ConfFileName]);
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % noise_filename='fru_site_noise_level.mat';
-noise_filename='no1_site_noise_level.mat';
+noise_filename='no2_site_noise_level.mat';
 
 global station
 %% LOOP DI PROCESSING
@@ -31,7 +31,7 @@ FROM=datenum(FROM,'yyyy-mm-dd_HH:MM');
 TO=datenum(TO,'yyyy-mm-dd_HH:MM');
 nownames=FROM:15/1440:TO;
 
-matfilepath='/home/item/Documents/MATLAB/ws_drumplot/matfiles/';
+matfilepath='http://148.251.122.130/matfiles/';
 % /home/item/Documents/MATLAB/ws_drumplot/matfiles/FRU/2016
 
 %%
@@ -46,15 +46,19 @@ for i15=1:length(nownames),
         upper(namestz),'_',datestr(nownames(i15),'yyyymmdd_HHMMSS'),'.mat'];
     
     try
-        load(file)
+        disp(file)
+        urlwrite(file,'tmpUrlRead.mat');
+        load('tmpUrlRead.mat')
+%                 load(file)
         nw=length(data.tt);
         time=data.tt;
         data=rmfield(data,'tt');
     catch
+        disp('WARNING error reading data')
         continue
     end
     
-    load(['/home/item/Documents/MATLAB/ws_drumplot/resources/',noise_filename])
+    load([working_dir,'/resources/',noise_filename])
     j=FF>=1 & FF<=10;
     
 %     figure,semilogx(FF,PWD,'k'),grid on,hold on 
